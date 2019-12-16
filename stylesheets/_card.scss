@@ -1,0 +1,41 @@
+#cardContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+
+    .mountainCard {
+        width: 20%;
+        background-color: $primary_70;
+        font-size: $font_M;
+        padding: 4rem;
+        margin:4rem;
+        border: 2px, solid, $primary_40;
+        box-shadow: 4px 4px 5px 1px;
+        cursor: pointer;
+
+        .mountainCard:active{
+            animation: pulse 1s 1 ease-out;
+        }
+
+        label {
+            font-size: $font_XXL;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes pulse {
+  from {
+    box-shadow:  0 0 0 0 rgba(255,255,255,1),
+                 0 0 0 0 rgba(51,51,51,1);
+  }
+  to {
+    box-shadow:  0 0 0 0.65em rgba(255,255,255,1),
+                 0 0 0 1em rgba(51,51,51,0);
+  }
+}
+
+    

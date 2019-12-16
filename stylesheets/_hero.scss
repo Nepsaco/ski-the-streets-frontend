@@ -1,0 +1,35 @@
+#heroContainer {
+    background-color: $primary_50;
+
+    .heroCard {
+        font-size: $font_XL;
+        display: flex;
+        height: 100%;
+
+        h2 {
+            font-size: $font_XXL;
+            padding: 4rem;
+        }
+
+        ul{
+            padding: 4rem;
+
+            li{
+                color: $primary_70;
+            }
+
+            a {
+                text-decoration: none;
+                color: $primary_20;
+            }
+        }
+
+        #right-panel {
+            overflow: auto;
+            height: 25rem;
+            width: 50%;
+            display: block;
+            background-color: white;
+        }
+    }
+}

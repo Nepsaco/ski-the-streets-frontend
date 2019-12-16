@@ -1,0 +1,9 @@
+body{
+    background-color: $primary_80;
+    font-family: $font_stack;
+    color: $primary_20;
+    #map{
+        height: 50vh;
+        width: 100%;
+    }
+}

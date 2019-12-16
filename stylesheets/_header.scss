@@ -1,0 +1,20 @@
+header {
+    font-family: $font_stack;
+    color: $neutral_10;
+    background-color: $primary_50;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1{
+        font-size: $font_XXXL;
+        font-family:$logo_font;
+    }
+    nav{
+        font-size: $font_XL;
+        background-color: $primary_60;
+        box-shadow: 4px 4px 5px 1px;
+        padding: 0.5rem;
+    }
+}
