@@ -1,6 +1,6 @@
 const container = document.querySelector('#cardContainer')
 const hero = document.querySelector('#heroContainer')
-const BASE_URL = 'http://localhost:9000'
+const BASE_URL = 'https://ski-the-streets.herokuapp.com/'
 let myMap
 let directionsRenderer
 let directionsService
