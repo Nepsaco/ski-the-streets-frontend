@@ -1,5 +1,6 @@
 const container = document.querySelector('#cardContainer')
 const hero = document.querySelector('#heroContainer')
+const BASE_URL = 'http://localhost:9000'
 let myMap
 let directionsRenderer
 let directionsService
@@ -135,23 +136,23 @@ function toggleClass(element){
 // Backend functions
 
 function getMountainId(){
-    return fetch('http://localhost:9000/mountains')
+    return fetch(`${BASE_URL}/mountains`)
         .then(handleResponse)
 }
 
 function getApiKey(){
     // dont push to production
-    return fetch('http://localhost:9000/')
+    return fetch(BASE_URL)
         .then(handleResponse)
 }
 
 function getUserAndFavorites(){
-    return fetch('http://localhost:9000/users')
+    return fetch(`${BASE_URL}/users`)
         .then(handleResponse)
 }
 
 function postFavorite(){
-    return fetch('http://localhost:9000/favorites', {
+    return fetch(`${BASE_URL}/favorites`, {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json'
