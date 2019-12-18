@@ -82,8 +82,11 @@ function handleFavoriteClick(event) {
 function displayFavorites(){
     const favButton = document.querySelector('#favorites')
     const modal = document.querySelector('#modal')
+
     favButton.addEventListener('click', event => {
         modal.addEventListener('click', favoriteCardClick)
+        modal.addEventListener('click', event => clearModal(event, modal))
+        clearModalCards()
         toggleClass(modal)
         getUserAndFavorites()
             .then(users => mapArray(users[0].favorites, makeFavoriteCard))
@@ -106,9 +109,21 @@ async function makeFavoriteCard(favorite){
     card.id = mountain.id
 
 
-    // modal.addEventListener('click',favoriteCardClick)
     appendElement(card, h2)
     appendElement(modalGuts, card)
+}
+
+function clearModal(event, element){
+    if(event.target.id === 'modal'){
+        toggleClass(element)
+    }
+}
+
+function clearModalCards(){
+    const modalGuts = document.querySelector('#modal-guts')
+    while (modalGuts.firstChild) {
+        modalGuts.removeChild(modalGuts.firstChild);
+    }
 }
 
 async function favoriteCardClick(event){
@@ -117,9 +132,7 @@ async function favoriteCardClick(event){
     let mountain = await getMountainInfo(event.target.id)
     
     modal.addEventListener('click', event => {
-        if(event.target.id == 'modal'){
-            toggleClass(modal)
-        } else if (Number.isInteger(parseInt(event.target.id))){
+        if (Number.isInteger(parseInt(event.target.id))){
             createHero(mountain)
             clearHero(heroCard)
             toggleClass(modal)
