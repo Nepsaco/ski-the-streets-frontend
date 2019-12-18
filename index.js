@@ -1,6 +1,7 @@
 const container = document.querySelector('#cardContainer')
 const hero = document.querySelector('#heroContainer')
 const BASE_URL = 'https://ski-the-streets.herokuapp.com'
+const API_KEY = 'YOUR API KEY HERE'
 let myMap
 let directionsRenderer
 let directionsService
@@ -11,9 +12,10 @@ let signedInUser = {id: 1, username: 'Adam'}
 
 getMountainId()
     .then(mountains => mapArray(mountains, createCard))
-getApiKey()
-    .then(loadScript)
 displayFavorites()
+loadScript(API_KEY)
+// getApiKey()
+    // .then(loadScript)
 
 // DOM Functions
 
@@ -140,11 +142,11 @@ function getMountainId(){
         .then(handleResponse)
 }
 
-function getApiKey(){
-    // dont push to production
-    return fetch(BASE_URL)
-        .then(handleResponse)
-}
+// function getApiKey(){
+//     // dont push to production
+//     return fetch('http://localhost:9000/')
+//         .then(handleResponse)
+// }
 
 function getUserAndFavorites(){
     return fetch(`${BASE_URL}/users`)
@@ -172,9 +174,8 @@ function getMountainInfo(mountain_id){
 // Google Map Functions
 //
 function loadScript(key) {
-    const API_KEY = key.key
     let script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`
     script.async = false;
     document.body.append(script);
 }
