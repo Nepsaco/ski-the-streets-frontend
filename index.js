@@ -16,7 +16,7 @@ getMountainId()
 displayFavorites()
 // loadScript(API_KEY)
 getApiKey()
-    .then(loadScript)
+    .then(response => loadScript(response.key))
 
 // DOM Functions
 
