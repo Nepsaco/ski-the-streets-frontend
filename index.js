@@ -1,7 +1,8 @@
 const container = document.querySelector('#cardContainer')
 const hero = document.querySelector('#heroContainer')
 const BASE_URL = 'https://ski-the-streets.herokuapp.com'
-const API_KEY = 'YOUR API KEY HERE'
+// const BASE_URL = 'http://localhost:9000'
+let API_KEY 
 let myMap
 let directionsRenderer
 let directionsService
@@ -13,9 +14,9 @@ let signedInUser = {id: 1, username: 'Adam'}
 getMountainId()
     .then(mountains => mapArray(mountains, createCard))
 displayFavorites()
-loadScript(API_KEY)
-// getApiKey()
-    // .then(loadScript)
+// loadScript(API_KEY)
+getApiKey()
+    .then(loadScript)
 
 // DOM Functions
 
@@ -130,7 +131,7 @@ async function favoriteCardClick(event){
     const modal = document.querySelector('#modal')
     const heroCard = document.querySelector('.heroCard')
     let mountain = await getMountainInfo(event.target.id)
-    
+
     modal.addEventListener('click', event => {
         if (Number.isInteger(parseInt(event.target.id))){
             createHero(mountain)
@@ -155,11 +156,11 @@ function getMountainId(){
         .then(handleResponse)
 }
 
-// function getApiKey(){
-//     // dont push to production
-//     return fetch('http://localhost:9000/')
-//         .then(handleResponse)
-// }
+function getApiKey(){
+    // dont push to production
+    return fetch(`${BASE_URL}/token`)
+        .then(handleResponse)
+}
 
 function getUserAndFavorites(){
     return fetch(`${BASE_URL}/users`)
